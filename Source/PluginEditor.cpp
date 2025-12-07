@@ -233,7 +233,8 @@ void SimpleChecklistEditor::rebuildTaskList() {
     auto *label = new juce::Label();
     juce::String displayText = task.text;
     if (task.completed) {
-      displayText = juce::CharPointer_UTF8("\xe2\x9c\x93 ") + task.text;
+      displayText =
+          juce::String(juce::CharPointer_UTF8("\xe2\x9c\x93 ")) + task.text;
     }
     label->setText(displayText, juce::dontSendNotification);
     label->setColour(juce::Label::backgroundColourId,
