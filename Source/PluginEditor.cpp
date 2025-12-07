@@ -10,6 +10,16 @@ SimpleChecklistEditor::SimpleChecklistEditor(SimpleChecklistProcessor &p)
     : AudioProcessorEditor(&p), processor(p) {
   setSize(400, 500);
 
+  // Set window icon
+  auto iconData = BinaryData::icon_png;
+  auto iconSize = BinaryData::icon_pngSize;
+  if (iconData != nullptr && iconSize > 0) {
+    auto iconImage = juce::ImageCache::getFromMemory(iconData, iconSize);
+    if (iconImage.isValid()) {
+      setIcon(iconImage);
+    }
+  }
+
   // Input box with dark styling
   addAndMakeVisible(inputBox);
   inputBox.setMultiLine(false);
