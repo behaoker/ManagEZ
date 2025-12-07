@@ -39,5 +39,5 @@ jobs:
       with:
         name: ManagEZ-VST3-Windows
         path: |
-          build/SimpleChecklistVST_artefacts/Release/VST3/ManagEZ.vst3
-          build/SimpleChecklistVST_artefacts/Release/Standalone/ManagEZ.exe
+          build/ManagEZ_artefacts/Release/VST3/ManagEZ.vst3
+          build/ManagEZ_artefacts/Release/Standalone/ManagEZ.exe
