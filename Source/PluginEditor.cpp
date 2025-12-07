@@ -52,26 +52,27 @@ SimpleChecklistEditor::~SimpleChecklistEditor() {
 }
 
 void SimpleChecklistEditor::paint(juce::Graphics &g) {
-  // Dark mode background
+  // Dark mode background - uniform color
   g.fillAll(juce::Colour(0xff1e1e1e));
 
   // Draw logo if available
   if (logoImage.isValid()) {
-    int logoSize = 32;
+    int logoSize = 40;
     int logoX = (getWidth() - logoSize) / 2;
-    g.drawImageAt(logoImage, logoX, 5);
+    g.drawImage(logoImage, logoX, 5, logoSize, logoSize, 0, 0,
+                logoImage.getWidth(), logoImage.getHeight());
   }
 
-  // Title with white text
+  // Title with white text below logo
   g.setColour(juce::Colours::white);
   g.setFont(juce::Font(16.0f, juce::Font::bold));
-  g.drawText("ManagEZ", 0, 40, getWidth(), 20, juce::Justification::centred);
+  g.drawText("ManagEZ", 0, 50, getWidth(), 20, juce::Justification::centred);
 }
 
 void SimpleChecklistEditor::resized() {
   auto area = getLocalBounds().reduced(10);
 
-  area.removeFromTop(60); // Logo + title space
+  area.removeFromTop(75); // Logo + title space
 
   // Input row
   auto inputRow = area.removeFromTop(30);
