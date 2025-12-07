@@ -5,6 +5,7 @@
 */
 
 #include "PluginEditor.h"
+#include "BinaryData.h"
 
 SimpleChecklistEditor::SimpleChecklistEditor(SimpleChecklistProcessor &p)
     : AudioProcessorEditor(&p), processor(p) {
@@ -58,8 +59,7 @@ void SimpleChecklistEditor::paint(juce::Graphics &g) {
   if (logoImage.isValid()) {
     int logoSize = 32;
     int logoX = (getWidth() - logoSize) / 2;
-    g.drawImage(logoImage, logoX, 5, logoSize, logoSize,
-                juce::RectanglePlacement::centred);
+    g.drawImageAt(logoImage, logoX, 5);
   }
 
   // Title with white text
