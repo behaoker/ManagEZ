@@ -1,4 +1,4 @@
-name: Build Simple Checklist VST3
+name: Build ManagEZ VST3
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
     - name: Upload VST3 Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: SimpleChecklistVST3-Windows
+        name: ManagEZ-VST3-Windows
         path: |
-          build/SimpleChecklistVST_artefacts/Release/VST3/Simple Checklist.vst3
-          build/SimpleChecklistVST_artefacts/Release/Standalone/Simple Checklist.exe
+          build/SimpleChecklistVST_artefacts/Release/VST3/ManagEZ.vst3
+          build/SimpleChecklistVST_artefacts/Release/Standalone/ManagEZ.exe
