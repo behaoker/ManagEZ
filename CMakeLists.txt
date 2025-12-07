@@ -23,6 +23,12 @@ juce_add_plugin(ManagEZ
     PRODUCT_NAME "ManagEZ"
 )
 
+# Binary resources (icon)
+juce_add_binary_data(ManagEZ_BinaryData
+    SOURCES
+        Resources/icon.png
+)
+
 # Source files
 target_sources(ManagEZ
     PRIVATE
@@ -43,6 +49,7 @@ target_compile_definitions(ManagEZ
 # Link JUCE modules - MINIMAL SET
 target_link_libraries(ManagEZ
     PRIVATE
+        ManagEZ_BinaryData
         juce::juce_audio_utils
         juce::juce_audio_processors
         juce::juce_gui_basics
