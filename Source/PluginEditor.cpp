@@ -34,8 +34,6 @@ SimpleChecklistEditor::SimpleChecklistEditor(SimpleChecklistProcessor &p)
   addAndMakeVisible(taskViewport);
   taskViewport.setViewedComponent(&taskContainer, false);
   taskViewport.setScrollBarsShown(true, false);
-  taskContainer.setColour(juce::Component::backgroundColourId,
-                          juce::Colour(0xff1e1e1e));
 
   // Listen for task changes
   processor.addListener(this);
