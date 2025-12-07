@@ -1,7 +1,7 @@
 /*
-  Minimal VST3 Checklist Plugin - Processor Header
+  ManagEZ v1.0 - Processor Header
 
-  Dead simple implementation with no fancy features.
+  Full-featured task management VST plugin
 */
 
 #pragma once
@@ -9,13 +9,23 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <vector>
 
-// Simple task struct
+// Priority levels for tasks
+enum class Priority { None = 0, Low = 1, Medium = 2, High = 3 };
+
+// Task categories
+enum class Category { General, Mix, Master, Record, Release };
+
+// Task data structure
 struct Task {
+  int id;
   juce::String text;
   bool completed;
+  Priority priority;
+  Category category;
 
-  Task() : completed(false) {}
-  Task(const juce::String &t) : text(t), completed(false) {}
+  Task()
+      : id(0), completed(false), priority(Priority::None),
+        category(Category::General) {}
 };
 
 class SimpleChecklistProcessor : public juce::AudioProcessor {
@@ -48,9 +58,21 @@ public:
 
   // Task management
   void addTask(const juce::String &text);
+  void editTask(int index, const juce::String &newText);
   void removeTask(int index);
   void toggleTask(int index);
+  void setTaskPriority(int index, Priority priority);
+  void setTaskCategory(int index, Category category);
+  void reorderTask(int fromIndex, int toIndex);
+
+  // Template management
+  void loadTemplate(const juce::String &templateName);
+  void clearAllTasks();
+
+  // Getters
   const std::vector<Task> &getTasks() const { return tasks; }
+  int getCompletedCount() const;
+  int getTotalCount() const { return static_cast<int>(tasks.size()); }
 
   // Listener for UI updates
   class Listener {
@@ -59,12 +81,13 @@ public:
     virtual void tasksChanged() = 0;
   };
 
-  void addListener(Listener *l) { listeners.add(l); }
-  void removeListener(Listener *l) { listeners.remove(l); }
+  void addListener(Listener *l);
+  void removeListener(Listener *l);
 
 private:
   std::vector<Task> tasks;
-  juce::ListenerList<Listener> listeners;
+  std::vector<Listener *> listeners;
+  int nextTaskId;
 
   void notifyListeners();
 
