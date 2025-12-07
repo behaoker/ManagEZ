@@ -124,6 +124,7 @@ void SimpleChecklistEditor::rebuildTaskList() {
     // Label
     auto *label = new juce::Label();
     label->setText(task.text, juce::dontSendNotification);
+    label->setColour(juce::Label::textColourId, juce::Colours::black);
     label->setBounds(45, yPos, 280, 30);
     taskContainer.addAndMakeVisible(label);
     labels.add(label);
