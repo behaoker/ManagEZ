@@ -150,8 +150,8 @@ void SimpleChecklistEditor::buttonClicked(juce::Button *button) {
   }
 }
 
-void Simple
-ChecklistEditor::textEditorReturnKeyPressed(juce::TextEditor &editor) {
+void SimpleChecklistEditor::textEditorReturnKeyPressed(
+    juce::TextEditor &editor) {
   if (&editor == &inputBox) {
     addTaskFromInput();
   } else if (&editor == editingEditor) {
@@ -172,7 +172,7 @@ void SimpleChecklistEditor::comboBoxChanged(juce::ComboBox *comboBox) {
     else if (selected == 3)
       processor.loadTemplate("Mastering");
     else if (selected == 4)
-      processor.loadTemplate("Recording");
+      processor.loadTemplate(" Recording");
     else if (selected == 5)
       processor.loadTemplate("Release");
     templateSelector.setSelectedId(1, juce::dontSendNotification);
