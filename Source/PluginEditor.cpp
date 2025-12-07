@@ -131,7 +131,7 @@ void SimpleChecklistEditor::rebuildTaskList() {
     // Delete button
     auto *delBtn = new juce::TextButton("X");
     delBtn->addListener(this);
-    delBtn.setBounds(330, yPos, 40, 30);
+    delBtn->setBounds(330, yPos, 40, 30);
     taskContainer.addAndMakeVisible(delBtn);
     deleteButtons.add(delBtn);
 
