@@ -10,15 +10,9 @@ SimpleChecklistEditor::SimpleChecklistEditor(SimpleChecklistProcessor &p)
     : AudioProcessorEditor(&p), processor(p) {
   setSize(400, 500);
 
-  // Set window icon
-  auto iconData = BinaryData::icon_png;
-  auto iconSize = BinaryData::icon_pngSize;
-  if (iconData != nullptr && iconSize > 0) {
-    auto iconImage = juce::ImageCache::getFromMemory(iconData, iconSize);
-    if (iconImage.isValid()) {
-      setIcon(iconImage);
-    }
-  }
+  // Load logo from binary data
+  logoImage = juce::ImageCache::getFromMemory(BinaryData::icon_png,
+                                              BinaryData::icon_pngSize);
 
   // Input box with dark styling
   addAndMakeVisible(inputBox);
@@ -58,18 +52,26 @@ SimpleChecklistEditor::~SimpleChecklistEditor() {
 
 void SimpleChecklistEditor::paint(juce::Graphics &g) {
   // Dark mode background
-  g.fillAll(juce::Colour(0xff1e1e1e)); // Dark gray background
+  g.fillAll(juce::Colour(0xff1e1e1e));
+
+  // Draw logo if available
+  if (logoImage.isValid()) {
+    int logoSize = 32;
+    int logoX = (getWidth() - logoSize) / 2;
+    g.drawImage(logoImage, logoX, 5, logoSize, logoSize,
+                juce::RectanglePlacement::centred);
+  }
 
   // Title with white text
   g.setColour(juce::Colours::white);
-  g.setFont(juce::Font(20.0f, juce::Font::bold));
-  g.drawText("ManagEZ", 0, 10, getWidth(), 30, juce::Justification::centred);
+  g.setFont(juce::Font(16.0f, juce::Font::bold));
+  g.drawText("ManagEZ", 0, 40, getWidth(), 20, juce::Justification::centred);
 }
 
 void SimpleChecklistEditor::resized() {
   auto area = getLocalBounds().reduced(10);
 
-  area.removeFromTop(40); // Title space
+  area.removeFromTop(60); // Logo + title space
 
   // Input row
   auto inputRow = area.removeFromTop(30);
