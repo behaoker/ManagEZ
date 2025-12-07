@@ -32,7 +32,7 @@ jobs:
     - name: Build Plugin
       run: |
         cd build
-        cmake --build . --config Release
+        cmake --build . --config Release --clean-first
     
     - name: Upload VST3 Artifact
       uses: actions/upload-artifact@v4
