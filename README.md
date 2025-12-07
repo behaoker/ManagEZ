@@ -1,4 +1,4 @@
-# Simple Checklist VST3
+# ManagEZ VST3
 
 A minimal VST3 plugin for basic task management in your DAW.
 
@@ -12,7 +12,7 @@ A minimal VST3 plugin for basic task management in your DAW.
 ## Installation
 
 1. Download the latest release from GitHub Actions artifacts
-2. Extract `Simple Checklist.vst3` folder
+2. Extract `ManagEZ.vst3` folder
 3. Copy to: `C:\Program Files\Common Files\VST3\`
 4. Restart your DAW
 5. Rescan plugins
