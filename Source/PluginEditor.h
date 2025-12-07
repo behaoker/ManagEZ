@@ -42,5 +42,8 @@ private:
   juce::OwnedArray<juce::Label> labels;
   juce::OwnedArray<juce::TextButton> deleteButtons;
 
+  // Logo
+  juce::Image logoImage;
+
   JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SimpleChecklistEditor)
 };
