@@ -150,8 +150,8 @@ void SimpleChecklistEditor::buttonClicked(juce::Button *button) {
   }
 }
 
-void SimpleChecklistEditor::textEditorReturnKeyPressed(
-    juce::TextEditor &editor) {
+void Simple
+ChecklistEditor::textEditorReturnKeyPressed(juce::TextEditor &editor) {
   if (&editor == &inputBox) {
     addTaskFromInput();
   } else if (&editor == editingEditor) {
@@ -213,8 +213,7 @@ void SimpleChecklistEditor::mouseDown(const juce::MouseEvent &event) {
   }
 }
 
-void SimpleChecklistEditor::showContextMenu(int taskIndex,
-                                            juce::Point<int> position) {
+void SimpleChecklistEditor::showContextMenu(int taskIndex, juce::Point<int>) {
   juce::PopupMenu menu;
 
   // Priority submenu
@@ -307,7 +306,7 @@ void SimpleChecklistEditor::rebuildTaskList() {
     priorityLabel->setColour(juce::Label::textColourId,
                              getPriorityColour(task.priority));
     priorityLabel->setBounds(45, yPos, 15, 30);
-    priorityLabel.setJustificationType(juce::Justification::centred);
+    priorityLabel->setJustificationType(juce::Justification::centred);
     taskContainer.addAndMakeVisible(priorityLabel);
     priorityLabels.add(priorityLabel);
 
